@@ -1,19 +1,18 @@
 import React from "react";
-import { Col, Row } from "reactstrap";
-import PieceButton from "./ChessBoardTile";
+import { Col, Container, Row } from "reactstrap";
+import ChessBoardTile from "./ChessBoardTile";
 
 const ChessBoard = ({ tileItems }) => {
   return (
     <div>
-      <Container>
-        <Row className="d-flex justify-content-center align-items-center">
+      <Container fluid className="d-flex justify-content-center w-75 h-75">
+        <Row className="align-items-center">
           {tileItems.map((row) => (
             <>
               {row.map((cell) => {
-                const pCell = <p>{cell}</p>;
                 return (
-                  <Col>
-                    <PieceButton image={pCell} />
+                  <Col style={{ width: "12.5%" }}>
+                    <ChessBoardTile piece={cell} />
                   </Col>
                 );
               })}
