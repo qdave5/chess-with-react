@@ -1,20 +1,5 @@
-import React, { Fragment, useState } from "react";
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  NavbarText,
-  Container,
-  Col,
-} from "reactstrap";
+import React, { Fragment } from "react";
+import { Container, Col } from "reactstrap";
 import { Outlet } from "react-router-dom";
 import NavbarLayout from "./Navbar";
 

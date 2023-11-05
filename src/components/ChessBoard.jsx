@@ -1,28 +1,29 @@
-import React from "react";
-import { Col, Row } from "reactstrap";
-import PieceButton from "./ChessBoardTile";
+import React, { useEffect } from "react";
+import { Container, Table } from "reactstrap";
+import ChessBoardTile from "./ChessBoardTile";
 
-const ChessBoard = ({ tileItems }) => {
+const ChessBoard = ({ tileItems, handleClickEvent }) => {
+  useEffect(() => {}, [tileItems]);
+
   return (
-    <div>
-      <Container>
-        <Row className="d-flex justify-content-center align-items-center">
-          {tileItems.map((row) => (
-            <>
-              {row.map((cell) => {
-                const pCell = <p>{cell}</p>;
-                return (
-                  <Col>
-                    <PieceButton image={pCell} />
-                  </Col>
-                );
-              })}
-              <div className="w-100"></div>
-            </>
-          ))}
-        </Row>
-      </Container>
-    </div>
+    <Container fluid className="d-flex justify-content-center w-75">
+      <Table>
+        {tileItems.map((row) => {
+          return (
+            <tr>
+              {row.cols.map((cell) => (
+                <td style={{ width: "12.5%" }}>
+                  <ChessBoardTile
+                    cell={cell}
+                    handleClickEvent={handleClickEvent}
+                  />
+                </td>
+              ))}
+            </tr>
+          );
+        })}
+      </Table>
+    </Container>
   );
 };
 
