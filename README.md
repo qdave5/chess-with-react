@@ -7,10 +7,17 @@ NPM : 2006522820
 Topik : Chess with ReactJS
 Technology : VSCode, ReactJS
 
+Resources:
+
+- Chess Piece's Icon: https://www.npmjs.com/package/@tabler/icons-react
+
+---
+
 **Target Progress 1** (13 Nov):
 
 - [x] Basic UI [Need Improvement]
   - [x] Chessboard [Need Improvement]
+  - [x] Chess Icon Resources
   - [ ] Main page positioning
 - [ ] Basic pieces movement [On Going]
   - [ ] Move a piece from tile to other tile
