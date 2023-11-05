@@ -8,7 +8,6 @@ import {
   RookPiece,
 } from "../components/Piece";
 import { getSameRow } from "../constant/SameRow";
-import { getColumnName } from "../functions";
 
 export const getEmptyTiles = () => {
   let tileList = [];

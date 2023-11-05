@@ -18,8 +18,6 @@ const HomeContain = () => {
     console.log("e.target", e.target.name);
   };
 
-  console.log("tileList", tileList);
-
   return (
     <Fragment>
       <Container fluid>

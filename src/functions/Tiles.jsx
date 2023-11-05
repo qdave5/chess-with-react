@@ -1,5 +1,3 @@
-import { getColumnName } from ".";
-
 export const updateAllTiles = (tileList, newList) => {
   let newTileList = [];
   let rowIdx = 1;

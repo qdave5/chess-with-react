@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Table } from "reactstrap";
+import React, { useEffect } from "react";
+import { Container, Table } from "reactstrap";
 import ChessBoardTile from "./ChessBoardTile";
-import { getColumnName } from "../functions";
 
 const ChessBoard = ({ tileItems, handleClickEvent }) => {
   useEffect(() => {}, [tileItems]);
