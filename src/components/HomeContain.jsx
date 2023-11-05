@@ -1,27 +1,39 @@
-import React from "react";
-import { Label } from "reactstrap";
+import React, { Fragment, useState } from "react";
+import { Container, Label } from "reactstrap";
 import ChessBoard from "./ChessBoard";
 import { getDefaultPieces, getEmptyTiles } from "../constructor/Tiles";
 import { updateAllTiles } from "../functions/Tiles";
+import { getSideTurn } from "../constant/PieceSide";
 
 const HomeContain = () => {
-  const list = getDefaultPieces();
-  const tileList = getEmptyTiles();
-  const updateList = updateAllTiles(tileList, list);
+  const [tileList, setTileList] = useState(
+    updateAllTiles(getEmptyTiles(), getDefaultPieces())
+  );
+
+  const [sideTurn, setSideTurn] = useState(true);
+  const toggleSideTurn = () => setSideTurn(!sideTurn);
 
   const handleClickEvent = (e) => {
     console.log("e", e);
     console.log("e.target", e.target.name);
   };
 
+  console.log("tileList", tileList);
+
   return (
-    <>
-      <h1>CHESS GAME</h1>
-      <Label>{"White"}'s Turn</Label>
-      <div className="h-75 w-75 d-flex">
-        <ChessBoard tileItems={list} handleClickEvent={handleClickEvent} />
-      </div>
-    </>
+    <Fragment>
+      <Container fluid>
+        <Label>
+          <strong>{getSideTurn(sideTurn)}'s Turn</strong>
+        </Label>
+        <div className="d-flex text-center">
+          <ChessBoard
+            tileItems={tileList}
+            handleClickEvent={handleClickEvent}
+          />
+        </div>
+      </Container>
+    </Fragment>
   );
 };
 

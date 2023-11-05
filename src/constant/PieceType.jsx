@@ -5,6 +5,7 @@ const PieceType = {
   Rook: "Rook",
   Queen: "Queen",
   King: "King",
+  Empty: "Empty",
 };
 
 export default PieceType;

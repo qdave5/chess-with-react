@@ -13,3 +13,4 @@ export const BishopPiece = Piece(PieceType.Bishop);
 export const RookPiece = Piece(PieceType.Rook);
 export const QueenPiece = Piece(PieceType.Queen);
 export const KingPiece = Piece(PieceType.King);
+export const EmptyPiece = () => Piece(PieceType.Empty)(" ");

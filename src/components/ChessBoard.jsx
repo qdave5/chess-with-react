@@ -1,28 +1,30 @@
-import React from "react";
-import { Col, Container, Row } from "reactstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Row, Table } from "reactstrap";
 import ChessBoardTile from "./ChessBoardTile";
 import { getColumnName } from "../functions";
 
 const ChessBoard = ({ tileItems, handleClickEvent }) => {
+  useEffect(() => {}, [tileItems]);
+
   return (
-    <div>
-      <Container fluid className="d-flex justify-content-center w-75">
-        <Row className="align-items-center" xs={8}>
-          {tileItems.map((tile) => {
-            return (
-              <>
-                <Col>
+    <Container fluid className="d-flex justify-content-center w-75">
+      <Table>
+        {tileItems.map((row) => {
+          return (
+            <tr>
+              {row.cols.map((cell) => (
+                <td style={{ width: "12.5%" }}>
                   <ChessBoardTile
-                    piece={tile}
+                    cell={cell}
                     handleClickEvent={handleClickEvent}
                   />
-                </Col>
-              </>
-            );
-          })}
-        </Row>
-      </Container>
-    </div>
+                </td>
+              ))}
+            </tr>
+          );
+        })}
+      </Table>
+    </Container>
   );
 };
 
