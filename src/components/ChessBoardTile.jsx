@@ -2,13 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 
-const ChessBoardTile = ({ piece, tileLocation }) => {
+const ChessBoardTile = ({ piece, tileLocation, handleClickEvent }) => {
   return (
     <Button
       className="w-100 h-100"
+      name={tileLocation}
       onClick={(e) => {
         e.preventDefault();
-        console.log(`${tileLocation} is clicked`);
+        handleClickEvent(e);
       }}
     >
       <p>{piece.image || " "}</p>
