@@ -1,3 +1,47 @@
+# About The Project
+
+This project was made for Functional Programming's final project.
+
+Author: Qosim Ariqoh Daffa
+NPM : 2006522820
+Topik : Chess with ReactJS
+Technology : VSCode, ReactJS
+
+**Target Progress 1** (13 Nov):
+
+- [x] Basic UI [Need Improvement]
+  - [x] Chessboard [Need Improvement]
+  - [ ] Main page positioning
+- [ ] Basic pieces movement [On Going]
+  - [ ] Move a piece from tile to other tile
+  - [ ] Progress for specific piece's movement
+
+**Target Progress 2** (27 Nov):
+
+- [ ] Basic game logic [TODO]
+  - [ ] Specific piece's movement
+    - [ ] King
+    - [ ] Queen
+    - [ ] Rook
+    - [ ] Knight
+    - [ ] Bishop
+    - [ ] Pawn
+  - [ ] Movement based on which side take the turn
+- [ ] Movement validation [TODO]
+  - [ ] Show error / button not active
+
+**Target Progress 3** (11 Des):
+
+- [ ] Checkmate conditional [TODO]
+  - [ ] Show when there is a check
+  - [ ] End the game when checkmate
+- [ ] Game logic improvement [TODO]
+  - [ ] Castling(?)
+  - [ ] That one pawn move
+- [ ] Save movement log [TODO]
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
