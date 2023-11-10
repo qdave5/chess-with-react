@@ -15,7 +15,7 @@ const ChessBoardTile = ({ cell, handleClickEvent }) => {
         handleClickEvent(e);
       }}
     >
-      {cell?.piece ? cell.piece.image : " "}
+      {cell?.piece ? cell.piece.icon : " "}
     </Button>
   );
 };

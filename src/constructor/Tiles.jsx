@@ -1,52 +1,63 @@
 import {
-  BishopPiece,
+  BishopBlackPiece,
+  BishopWhitePiece,
   EmptyPiece,
-  KingPiece,
-  KnightPiece,
-  PawnPiece,
-  QueenPiece,
-  RookPiece,
+  KingBlackPiece,
+  KingWhitePiece,
+  KnightBlackPiece,
+  KnightWhitePiece,
+  PawnBlackPiece,
+  PawnWhitePiece,
+  QueenBlackPiece,
+  QueenWhitePiece,
+  RookBlackPiece,
+  RookWhitePiece,
 } from "../components/Piece";
 import { getSameRow } from "../constant/SameRow";
 
 export const getEmptyTiles = () => {
   let tileList = [];
-  for (let row = 1; row <= 8; row++) {
-    let colList = [];
-    for (let col = 1; col <= 8; col++) {
-      colList.push({ col: col, tile: `${row}-${col}`, piece: EmptyPiece() });
-    }
-    tileList.push({ row: row, cols: colList });
+  for (let index = 0; index < 64; index++) {
+    const row = parseInt(index / 8) + 1;
+    const col = (index % 8) + 1;
+    tileList.push({
+      row: row,
+      col: col,
+      tile: `${row}-${col}`,
+      piece: <EmptyPiece />,
+    });
   }
   return tileList;
 };
 
-export const getDefaultPieces = () => [
+export const getDefaultPieces = () =>
   [
-    RookPiece("BR"),
-    KnightPiece("BK"),
-    BishopPiece("BB"),
-    KingPiece("BKing"),
-    QueenPiece("BQueen"),
-    BishopPiece("BB"),
-    KnightPiece("BK"),
-    RookPiece("BR"),
-  ],
+    [
+      RookBlackPiece(),
+      KnightBlackPiece(),
+      BishopBlackPiece(),
+      QueenBlackPiece(),
+      KingBlackPiece(),
+      BishopBlackPiece(),
+      KnightBlackPiece(),
+      RookBlackPiece(),
+    ],
 
-  getSameRow(PawnPiece("BP")),
-  getSameRow(EmptyPiece()),
-  getSameRow(EmptyPiece()),
-  getSameRow(EmptyPiece()),
-  getSameRow(EmptyPiece()),
-  getSameRow(PawnPiece("WP")),
-  [
-    RookPiece("WR"),
-    KnightPiece("WK"),
-    BishopPiece("WB"),
-    KingPiece("WKing"),
-    QueenPiece("WQueen"),
-    BishopPiece("WB"),
-    KnightPiece("WK"),
-    RookPiece("WR"),
-  ],
-];
+    getSameRow(PawnBlackPiece()),
+    getSameRow(EmptyPiece()),
+    getSameRow(EmptyPiece()),
+    getSameRow(EmptyPiece()),
+    getSameRow(EmptyPiece()),
+    getSameRow(PawnWhitePiece()),
+
+    [
+      RookWhitePiece(),
+      KnightWhitePiece(),
+      BishopWhitePiece(),
+      QueenWhitePiece(),
+      KingWhitePiece(),
+      BishopWhitePiece(),
+      KnightWhitePiece(),
+      RookWhitePiece(),
+    ],
+  ].flat(1);

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Container, Label } from "reactstrap";
 import ChessBoard from "./ChessBoard";
 import { getDefaultPieces, getEmptyTiles } from "../constructor/Tiles";
@@ -6,12 +6,14 @@ import { updateAllTiles } from "../functions/Tiles";
 import { getSideTurn } from "../constant/PieceSide";
 
 const HomeContain = () => {
-  const [tileList, setTileList] = useState(
-    updateAllTiles(getEmptyTiles(), getDefaultPieces())
-  );
+  const [tileList, setTileList] = useState(getEmptyTiles());
 
   const [sideTurn, setSideTurn] = useState(true);
   const toggleSideTurn = () => setSideTurn(!sideTurn);
+
+  useEffect(() => {
+    setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
+  }, []);
 
   const handleClickEvent = (e) => {
     console.log("e", e);
