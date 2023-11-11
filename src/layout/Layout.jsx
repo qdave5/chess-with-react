@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Container, Col } from "reactstrap";
+import { Container, Col, Row } from "reactstrap";
 import { Outlet } from "react-router-dom";
 import NavbarLayout from "./Navbar";
 
@@ -7,12 +7,14 @@ const Layout = () => {
   return (
     <Fragment>
       <Container fluid>
-        <Col>
-          <NavbarLayout />
-        </Col>
-        <Col>
-          <Outlet />
-        </Col>
+        <Row>
+          <Col>
+            <NavbarLayout />
+          </Col>
+          <Col xs={9} md={9} xl={9}>
+            <Outlet />
+          </Col>
+        </Row>
       </Container>
     </Fragment>
   );
