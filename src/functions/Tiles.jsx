@@ -11,3 +11,15 @@ export const updateAllTiles = (tileList, newList) => {
 
   return newTileList;
 };
+
+export const getTile = (tileList, target) => {
+  const [row, col] = target.split("-");
+  return tileList.find(
+    (item) =>
+      (item.row &&
+        item.row === Number(row) &&
+        item.col &&
+        item.col === Number(col)) ||
+      (item.tile && item.tile === target)
+  );
+};
