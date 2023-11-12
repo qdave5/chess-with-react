@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Button } from "reactstrap";
-import { PieceSide } from "../constant/PieceSide";
+import { PieceSide } from "../../constant/PieceSide";
 
 const ChessBoardTile = ({ cell, handleClickEvent }) => {
   useEffect(() => {}, [cell]);
