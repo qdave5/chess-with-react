@@ -1,16 +1,54 @@
+import {
+  IconChess,
+  IconChessBishop,
+  IconChessBishopFilled,
+  IconChessFilled,
+  IconChessKing,
+  IconChessKingFilled,
+  IconChessKnight,
+  IconChessKnightFilled,
+  IconChessQueen,
+  IconChessQueenFilled,
+  IconChessRook,
+  IconChessRookFilled,
+} from "@tabler/icons-react";
+import { PieceSide } from "../constant/PieceSide";
 import PieceType from "../constant/PieceType";
 
-export const Piece = (type) => (image) => {
-  return {
-    type: type,
-    image: image,
-  };
-};
+export const Piece = (side) => (type) => (icon) => ({
+  side: side,
+  type: type,
+  icon: icon,
+});
 
-export const PawnPiece = Piece(PieceType.Pawn);
-export const KnightPiece = Piece(PieceType.Knight);
-export const BishopPiece = Piece(PieceType.Bishop);
-export const RookPiece = Piece(PieceType.Rook);
-export const QueenPiece = Piece(PieceType.Queen);
-export const KingPiece = Piece(PieceType.King);
-export const EmptyPiece = () => Piece(PieceType.Empty)(" ");
+const WhitePiece = Piece(PieceSide.White);
+const BlackPiece = Piece(PieceSide.Black);
+
+export const EmptyPiece = () => Piece(PieceSide.Empty)(PieceType.Empty)(" ");
+
+// White team
+export const PawnWhitePiece = () => WhitePiece(PieceType.Pawn)(<IconChess />);
+export const KnightWhitePiece = () =>
+  WhitePiece(PieceType.Knight)(<IconChessKnight />);
+export const BishopWhitePiece = () =>
+  WhitePiece(PieceType.Bishop)(<IconChessBishop />);
+export const RookWhitePiece = () =>
+  WhitePiece(PieceType.Rook)(<IconChessRook />);
+export const QueenWhitePiece = () =>
+  WhitePiece(PieceType.Queen)(<IconChessQueen />);
+export const KingWhitePiece = () =>
+  WhitePiece(PieceType.King)(<IconChessKing />);
+
+// Black side
+export const PawnBlackPiece = () =>
+  BlackPiece(PieceType.Pawn)(<IconChessFilled />);
+export const KnightBlackPiece = () =>
+  BlackPiece(PieceType.Knight)(<IconChessKnightFilled />);
+export const BishopBlackPiece = () =>
+  BlackPiece(PieceType.Bishop)(<IconChessBishopFilled />);
+export const RookBlackPiece = () =>
+  BlackPiece(PieceType.Rook)(<IconChessRookFilled />);
+export const QueenBlackPiece = () =>
+  BlackPiece(PieceType.Queen)(<IconChessQueenFilled />);
+export const KingBlackPiece = () =>
+  BlackPiece(PieceType.King)(<IconChessKingFilled />);

@@ -1,20 +1,25 @@
+import { getIndexFromRowCol } from ".";
+
 export const updateAllTiles = (tileList, newList) => {
   let newTileList = [];
-  let rowIdx = 1;
-  newList.map((row) => {
-    let colList = [];
-    let colIdx = 1;
-    row.map((col) => {
-      colList.push({
-        col: colIdx,
-        tile: `${rowIdx}-${colIdx}`,
-        piece: col,
-      });
-      colIdx++;
-    });
-
-    newTileList.push({ row: rowIdx++, cols: colList });
+  newTileList = tileList.map((prev) => {
+    return {
+      ...prev,
+      piece: newList[getIndexFromRowCol(prev.row, prev.col)],
+    };
   });
 
   return newTileList;
+};
+
+export const getTile = (tileList, target) => {
+  const [row, col] = target.split("-");
+  return tileList.find(
+    (item) =>
+      (item.row &&
+        item.row === Number(row) &&
+        item.col &&
+        item.col === Number(col)) ||
+      (item.tile && item.tile === target)
+  );
 };
