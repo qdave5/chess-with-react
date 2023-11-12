@@ -13,17 +13,16 @@ Resources:
 
 ---
 
-**Target Progress 1** (13 Nov):
+## **Target Progress 1** (13 Nov):
 
 - [x] Basic UI [Need Improvement]
   - [x] Chessboard [Need Improvement]
   - [x] Chess Icon Resources
-  - [ ] Main page positioning
-- [ ] Basic pieces movement [On Going]
-  - [ ] Move a piece from tile to other tile
-  - [ ] Progress for specific piece's movement
+  - [?] Main page positioning
+- [x] Basic pieces movement [Done]
+  - [x] Move a piece from tile to other tile
 
-**Target Progress 2** (27 Nov):
+## **Target Progress 2** (27 Nov):
 
 - [ ] Basic game logic [TODO]
   - [ ] Specific piece's movement
@@ -37,7 +36,7 @@ Resources:
 - [ ] Movement validation [TODO]
   - [ ] Show error / button not active
 
-**Target Progress 3** (11 Des):
+## **Target Progress 3** (11 Des):
 
 - [ ] Checkmate conditional [TODO]
   - [ ] Show when there is a check
