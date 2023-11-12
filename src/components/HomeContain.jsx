@@ -5,6 +5,7 @@ import { getDefaultPieces, getEmptyTiles } from "../constructor/Tiles";
 import { getTile, updateAllTiles } from "../functions/Tiles";
 import { getSideTurn } from "../constant/PieceSide";
 import PieceType from "../constant/PieceType";
+import { movePiece } from "../functions/PieceMovement";
 
 const HomeContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
@@ -18,6 +19,8 @@ const HomeContain = () => {
     setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
   }, []);
 
+  useEffect(() => {}, [sourcePiece]);
+
   const handleClickEvent = (tile) => {
     const selectedTile = getTile(tileList, tile);
 
@@ -27,7 +30,8 @@ const HomeContain = () => {
     } else if (sourcePiece.tile === tile) {
       setSourcePiece(null);
     } else {
-      // TODO: move piece to the new tile
+      movePiece(sourcePiece, selectedTile);
+      setSourcePiece(null);
     }
   };
 
