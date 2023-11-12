@@ -29,7 +29,7 @@ const NavbarLayout = () => {
           <ListGroupItem action active href="/" tag="a">
             CHESS
           </ListGroupItem>
-          <ListGroupItem action href="/" tag="a">
+          <ListGroupItem action href="/play" tag="a">
             Reset Page
           </ListGroupItem>
         </ListGroup>
