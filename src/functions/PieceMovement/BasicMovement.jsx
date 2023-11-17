@@ -14,6 +14,7 @@ export const movePiece = (sourceTile, targetTile) => {
 
 export const checkValidMove = (source, target) => {
   return (
+    source.tile === target.tile ||
     target.piece?.type === PieceType.Empty ||
     source.piece?.side !== target.piece?.side
   );
