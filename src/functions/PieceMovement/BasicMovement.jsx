@@ -8,6 +8,8 @@ export const movePiece = (sourceTile, targetTile) => {
   targetTile.piece = sourceTile.piece;
   sourceTile.piece = EmptyPiece();
 
+  targetTile.piece.step += 1;
+
   console.log("source", sourceTile);
   console.log("target", targetTile);
 };
