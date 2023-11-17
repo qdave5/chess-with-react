@@ -5,7 +5,7 @@ import { getDefaultPieces, getEmptyTiles } from "../../constructor/Tiles";
 import { getTile, updateAllTiles } from "../../functions/Tiles";
 import { PieceSide, getSideTurn } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
-import { movePiece } from "../../functions/PieceMovement";
+import { movePiece } from "../../functions/PieceMovement/BasicMovement";
 
 const ChessBoardContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
