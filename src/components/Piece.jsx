@@ -16,9 +16,10 @@ import { PieceSide } from "../constant/PieceSide";
 import PieceType from "../constant/PieceType";
 
 export const Piece = (side) => (type) => (icon) => ({
-  side: side,
-  type: type,
   icon: icon,
+  side: side,
+  step: 0,
+  type: type,
 });
 
 const WhitePiece = Piece(PieceSide.White);
