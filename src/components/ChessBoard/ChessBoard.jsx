@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from "reactstrap";
 import ChessBoardTile from "./ChessBoardTile";
 
-const ChessBoard = ({ tileItems, handleClickEvent }) => {
+const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
   const [tile8x8, setTile8x8] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const ChessBoard = ({ tileItems, handleClickEvent }) => {
                 <td style={{ width: "12.5%" }} key={cell.tile}>
                   <ChessBoardTile
                     cell={cell}
+                    isActive={isButtonActive(cell, sourcePiece, sideTurn)}
                     handleClickEvent={handleClickEvent}
                   />
                 </td>
@@ -37,6 +38,10 @@ const ChessBoard = ({ tileItems, handleClickEvent }) => {
       </Table>
     </Container>
   );
+};
+
+const isButtonActive = (cell, sourcePiece, sideTurn) => {
+  return cell.piece?.side === sideTurn || sourcePiece !== null;
 };
 
 export default ChessBoard;
