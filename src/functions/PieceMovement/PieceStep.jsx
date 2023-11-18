@@ -4,9 +4,13 @@ import PieceType from "../../constant/PieceType";
 import {
   step,
   stepDown,
+  stepDownAll,
   stepDownLeft,
   stepDownRight,
+  stepLeftAll,
+  stepRightAll,
   stepUp,
+  stepUpAll,
   stepUpLeft,
   stepUpRight,
 } from "./Step";
@@ -69,7 +73,12 @@ export const rookStep = (tileList, source, target) => {
   // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
-  const stepIdxList = [];
+  const stepIdxList = [
+    stepRightAll(idx),
+    stepLeftAll(idx),
+    stepUpAll(idx),
+    stepDownAll(idx),
+  ].flat();
 
   return stepIdxList;
 };
