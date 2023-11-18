@@ -15,6 +15,16 @@ export const pieceStep = (tileList, source, target) => {
   switch (source.piece?.type) {
     case PieceType.Pawn:
       return pawnStep(tileList, source, target);
+    case PieceType.Bishop:
+      return bishopStep(tileList, source, target);
+    case PieceType.Knight:
+      return knightStep(tileList, source, target);
+    case PieceType.Rook:
+      return rookStep(tileList, source, target);
+    case PieceType.Queen:
+      return queenStep(tileList, source, target);
+    case PieceType.King:
+      return kingStep(tileList, source, target);
   }
 };
 
@@ -34,5 +44,50 @@ export const pawnStep = (tileList, source, target) => {
     );
 
   console.log("list", stepIdxList);
+  return stepIdxList;
+};
+
+export const bishopStep = (tileList, source, target) => {
+  // TODO
+  const idx = getIndexFromRowCol(source.row, source.col);
+
+  const stepIdxList = [];
+
+  return stepIdxList;
+};
+
+export const knightStep = (tileList, source, target) => {
+  // TODO
+  const idx = getIndexFromRowCol(source.row, source.col);
+
+  const stepIdxList = [];
+
+  return stepIdxList;
+};
+
+export const rookStep = (tileList, source, target) => {
+  // TODO
+  const idx = getIndexFromRowCol(source.row, source.col);
+
+  const stepIdxList = [];
+
+  return stepIdxList;
+};
+
+export const queenStep = (tileList, source, target) => {
+  // TODO
+  const idx = getIndexFromRowCol(source.row, source.col);
+
+  const stepIdxList = [];
+
+  return stepIdxList;
+};
+
+export const kingStep = (tileList, source, target) => {
+  // TODO
+  const idx = getIndexFromRowCol(source.row, source.col);
+
+  const stepIdxList = [];
+
   return stepIdxList;
 };
