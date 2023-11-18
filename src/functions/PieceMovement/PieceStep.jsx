@@ -6,13 +6,17 @@ import {
   stepDown,
   stepDownAll,
   stepDownLeft,
+  stepDownLeftAll,
   stepDownRight,
+  stepDownRightAll,
   stepLeftAll,
   stepRightAll,
   stepUp,
   stepUpAll,
   stepUpLeft,
+  stepUpLeftAll,
   stepUpRight,
+  stepUpRightAll,
 } from "./Step";
 
 export const pieceStep = (tileList, source, target) => {
@@ -55,7 +59,12 @@ export const bishopStep = (tileList, source, target) => {
   // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
-  const stepIdxList = [];
+  const stepIdxList = [
+    stepUpRightAll(idx),
+    stepUpLeftAll(idx),
+    stepDownRightAll(idx),
+    stepDownLeftAll(idx),
+  ].flat();
 
   return stepIdxList;
 };
