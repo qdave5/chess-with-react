@@ -28,7 +28,12 @@ const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
                 <td style={{ width: "12.5%" }} key={cell.tile}>
                   <ChessBoardTile
                     cell={cell}
-                    isActive={isButtonActive(cell, sourcePiece, sideTurn)}
+                    isActive={isButtonActive(
+                      tileItems,
+                      sourcePiece,
+                      cell,
+                      sideTurn
+                    )}
                     handleClickEvent={handleClickEvent}
                   />
                 </td>
@@ -41,10 +46,10 @@ const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
   );
 };
 
-const isButtonActive = (cell, sourcePiece, sideTurn) => {
+const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
   return sourcePiece === null
     ? cell.piece?.side === sideTurn
-    : checkValidMove(sourcePiece, cell);
+    : checkValidMove(tileItems, sourcePiece, cell);
 };
 
 export default ChessBoard;
