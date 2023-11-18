@@ -2,14 +2,15 @@ import { getIndexFromRowCol } from "..";
 import { PieceSide } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
 import {
-  step,
   stepDown,
   stepDownAll,
   stepDownLeft,
   stepDownLeftAll,
   stepDownRight,
   stepDownRightAll,
+  stepLeft,
   stepLeftAll,
+  stepRight,
   stepRightAll,
   stepUp,
   stepUpAll,
@@ -114,7 +115,16 @@ export const kingStep = (tileList, source, target) => {
   // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
-  const stepIdxList = [];
+  const stepIdxList = [
+    stepUp(idx),
+    stepUpRight(idx),
+    stepUpLeft(idx),
+    stepRight(idx),
+    stepLeft(idx),
+    stepDown(idx),
+    stepDownRight(idx),
+    stepDownLeft(idx),
+  ];
 
   return stepIdxList;
 };
