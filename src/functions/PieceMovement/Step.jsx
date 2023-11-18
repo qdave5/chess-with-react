@@ -2,10 +2,6 @@ export const step = (func) => (idx) => {
   const newIdx = func(idx);
   return outOfBound(idx, newIdx) ? -1 : newIdx;
 };
-export const step2 = (func2) => (func) => (idx) => {
-  const newIdx = func(func2(idx));
-  return outOfBound(idx, newIdx) ? -1 : newIdx;
-};
 
 export const outOfBound = (idx, newIdx) =>
   newIdx < 0 ||
@@ -17,10 +13,10 @@ export const stepRight = step((idx) => idx + 1);
 export const stepLeft = step((idx) => idx - 1);
 export const stepUp = step((idx) => idx - 8);
 export const stepDown = step((idx) => idx + 8);
-export const stepUpRight = step2(stepUp)(stepRight);
-export const stepUpLeft = step2(stepUp)(stepLeft);
-export const stepDownRight = step2(stepDown)(stepRight);
-export const stepDownLeft = step2(stepDown)(stepLeft);
+export const stepUpRight = step((idx) => idx - 7);
+export const stepUpLeft = step((idx) => idx - 9);
+export const stepDownRight = step((idx) => idx + 9);
+export const stepDownLeft = step((idx) => idx + 7);
 
 export const stepRightAll = (idx) => {
   const newIdx = stepRight(idx);
