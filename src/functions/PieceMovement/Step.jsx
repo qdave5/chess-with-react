@@ -1,13 +1,17 @@
-export const step = (func) => (idx) => {
+const step = (func) => (idx) => {
   const newIdx = func(idx);
   return outOfBound(idx, newIdx) ? -1 : newIdx;
 };
-export const step2 = (func2) => (func) => (idx) => {
-  const newIdx = func(func2(idx));
+const step2 = (func1) => (func2) => (idx) => {
+  const newIdx = func1(func2(idx));
+  return outOfBound(idx, newIdx) ? -1 : newIdx;
+};
+const stepL = (func1) => (func2) => (idx) => {
+  const newIdx = func1(func1(func2(idx)));
   return outOfBound(idx, newIdx) ? -1 : newIdx;
 };
 
-export const outOfBound = (idx, newIdx) =>
+const outOfBound = (idx, newIdx) =>
   newIdx < 0 ||
   newIdx > 63 ||
   (idx % 8 === 0 && newIdx % 8 === 7) ||
@@ -54,3 +58,12 @@ export const stepDownLeftAll = (idx) => {
   const newIdx = stepDownLeft(idx);
   return [newIdx].concat(newIdx !== -1 ? stepDownLeftAll(newIdx) : []);
 };
+
+export const stepRightUpKnight = stepL(stepRight)(stepUp);
+export const stepRightDownKnight = stepL(stepRight)(stepDown);
+export const stepLeftUpKnight = stepL(stepLeft)(stepUp);
+export const stepLeftDownKnight = stepL(stepLeft)(stepDown);
+export const stepUpRightKnight = stepL(stepUp)(stepRight);
+export const stepUpLeftKnight = stepL(stepUp)(stepLeft);
+export const stepDownRightKnight = stepL(stepDown)(stepRight);
+export const stepDownLeftKnight = stepL(stepDown)(stepLeft);

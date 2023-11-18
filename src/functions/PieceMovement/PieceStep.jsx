@@ -6,18 +6,26 @@ import {
   stepDownAll,
   stepDownLeft,
   stepDownLeftAll,
+  stepDownLeftKnight,
   stepDownRight,
   stepDownRightAll,
+  stepDownRightKnight,
   stepLeft,
   stepLeftAll,
+  stepLeftDownKnight,
+  stepLeftUpKnight,
   stepRight,
   stepRightAll,
+  stepRightDownKnight,
+  stepRightUpKnight,
   stepUp,
   stepUpAll,
   stepUpLeft,
   stepUpLeftAll,
+  stepUpLeftKnight,
   stepUpRight,
   stepUpRightAll,
+  stepUpRightKnight,
 } from "./Step";
 
 export const pieceStep = (tileList, source, target) => {
@@ -52,12 +60,10 @@ export const pawnStep = (tileList, source, target) => {
         : stepDown(stepDown(idx))
     );
 
-  console.log("list", stepIdxList);
   return stepIdxList;
 };
 
 export const bishopStep = (tileList, source, target) => {
-  // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -71,16 +77,23 @@ export const bishopStep = (tileList, source, target) => {
 };
 
 export const knightStep = (tileList, source, target) => {
-  // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
-  const stepIdxList = [];
+  const stepIdxList = [
+    stepRightUpKnight(idx),
+    stepRightDownKnight(idx),
+    stepLeftUpKnight(idx),
+    stepLeftDownKnight(idx),
+    stepUpRightKnight(idx),
+    stepUpLeftKnight(idx),
+    stepDownRightKnight(idx),
+    stepDownLeftKnight(idx),
+  ];
 
   return stepIdxList;
 };
 
 export const rookStep = (tileList, source, target) => {
-  // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -94,7 +107,6 @@ export const rookStep = (tileList, source, target) => {
 };
 
 export const queenStep = (tileList, source, target) => {
-  // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -112,7 +124,6 @@ export const queenStep = (tileList, source, target) => {
 };
 
 export const kingStep = (tileList, source, target) => {
-  // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
