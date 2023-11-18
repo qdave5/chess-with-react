@@ -1,13 +1,14 @@
 export const step = (func) => (idx) => {
   const newIdx = func(idx);
-  return outOfBound(newIdx) ? -1 : newIdx;
+  return outOfBound(idx, newIdx) ? -1 : newIdx;
 };
 export const step2 = (func2) => (func) => (idx) => {
   const newIdx = func(func2(idx));
-  return outOfBound(newIdx) ? -1 : newIdx;
+  return outOfBound(idx, newIdx) ? -1 : newIdx;
 };
 
-export const outOfBound = (idx) => idx < 0 || idx > 63;
+export const outOfBound = (idx, newIdx) =>
+  (idx % 8 === 0 && newIdx % 8 === 7) || (idx % 8 === 7 && newIdx % 8 === 0);
 
 export const stepRight = step((idx) => idx + 1);
 export const stepLeft = step((idx) => idx - 1);
