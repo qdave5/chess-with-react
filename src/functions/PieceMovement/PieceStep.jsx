@@ -96,7 +96,16 @@ export const queenStep = (tileList, source, target) => {
   // TODO
   const idx = getIndexFromRowCol(source.row, source.col);
 
-  const stepIdxList = [];
+  const stepIdxList = [
+    stepRightAll(idx),
+    stepLeftAll(idx),
+    stepUpAll(idx),
+    stepDownAll(idx),
+    stepUpRightAll(idx),
+    stepUpLeftAll(idx),
+    stepDownRightAll(idx),
+    stepDownLeftAll(idx),
+  ].flat();
 
   return stepIdxList;
 };
