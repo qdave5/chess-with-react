@@ -16,13 +16,6 @@ export const movePiece = (sourceTile, targetTile) => {
   console.log("target", targetTile);
 };
 
-export const checkValidMove = (tileItems, source, target) => {
-  return (
-    source.tile === target.tile ||
-    pieceStep(tileItems, source, target).includes(
-      getIndexFromRowCol(target.row, target.col)
-    )
-    // source.piece?.side !== target.piece?.side
-    // target.piece?.type === PieceType.Empty ||
-  );
+export const checkValidMove = (source, target) => {
+  return source.tile === target?.tile || pieceStep(source);
 };

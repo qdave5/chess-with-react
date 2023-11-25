@@ -5,7 +5,10 @@ import { getDefaultPieces, getEmptyTiles } from "../../constructor/Tiles";
 import { getTile, updateAllTiles } from "../../functions/Tiles";
 import { PieceSide, getSideTurn } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
-import { movePiece } from "../../functions/PieceMovement/BasicMovement";
+import {
+  checkValidMove,
+  movePiece,
+} from "../../functions/PieceMovement/BasicMovement";
 
 const ChessBoardContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
@@ -18,11 +21,43 @@ const ChessBoardContain = () => {
 
   const [sourcePiece, setSourcePiece] = useState(null);
 
+  const [validMove, setValidMove] = useState({
+    [PieceSide.White]: {},
+    [PieceSide.Black]: {},
+  });
+
+  console.log(validMove);
+
   useEffect(() => {
     setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
   }, []);
 
-  useEffect(() => {}, [sourcePiece]);
+  useEffect(() => {
+    updateValidMove();
+  }, [tileList, sourcePiece]);
+
+  const updateValidMove = () => {
+    setValidMove((prev) => {
+      const whiteList = tileList.filter(
+        (tile) => tile.piece?.side === PieceSide.White
+      );
+      const blackList = tileList.filter(
+        (tile) => tile.piece?.side === PieceSide.Black
+      );
+
+      const whiteMap = whiteList.map((item) => ({
+        [item.tile]: checkValidMove(item),
+      }));
+      const blackMap = blackList.map((item) => ({
+        [item.tile]: checkValidMove(item),
+      }));
+
+      return {
+        [PieceSide.White]: whiteMap,
+        [PieceSide.Black]: blackMap,
+      };
+    });
+  };
 
   const handleClickEvent = (tile) => {
     const selectedTile = getTile(tileList, tile);
