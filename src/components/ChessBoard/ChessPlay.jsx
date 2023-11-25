@@ -3,7 +3,7 @@ import { Col, Container, Label } from "reactstrap";
 import ChessBoard from "../ChessBoard/ChessBoard";
 import { getDefaultPieces, getEmptyTiles } from "../../constructor/Tiles";
 import { getTile, updateAllTiles } from "../../functions/Tiles";
-import { PieceSide, getSideTurn } from "../../constant/PieceSide";
+import { PieceSide } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
 import {
   checkValidMove,
@@ -25,8 +25,6 @@ const ChessBoardContain = () => {
     [PieceSide.White]: {},
     [PieceSide.Black]: {},
   });
-
-  console.log(validMove);
 
   useEffect(() => {
     setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
@@ -73,8 +71,6 @@ const ChessBoardContain = () => {
       toggleSideTurn();
     }
   };
-
-  console.log(sourcePiece);
 
   return (
     <Fragment>

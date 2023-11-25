@@ -3,8 +3,11 @@
 This project was made for Functional Programming's final project.
 
 Author: Qosim Ariqoh Daffa
+
 NPM : 2006522820
-Topik : Chess with ReactJS
+
+Topic : Chess with ReactJS
+
 Technology : VSCode, ReactJS
 
 Resources:
@@ -18,23 +21,27 @@ Resources:
 - [x] Basic UI [Need Improvement]
   - [x] Chessboard [Need Improvement]
   - [x] Chess Icon Resources
-  - [?] Main page positioning
+  - [x] Main page positioning [Need Improvement]
 - [x] Basic pieces movement [Done]
   - [x] Move a piece from tile to other tile
 
 ## **Target Progress 2** (27 Nov):
 
-- [ ] Basic game logic [TODO]
-  - [ ] Specific piece's movement
-    - [ ] King
-    - [ ] Queen
-    - [ ] Rook
-    - [ ] Knight
-    - [ ] Bishop
-    - [ ] Pawn
-  - [ ] Movement based on which side take the turn
-- [ ] Movement validation [TODO]
-  - [ ] Show error / button not active
+- [x] Basic game logic [Done]
+  - [x] Specific piece's movement
+    - [x] King
+    - [x] Queen
+    - [x] Rook
+    - [x] Knight
+    - [x] Bishop
+    - [x] Pawn
+  - [x] Movement based on which side take the turn
+- [x] Movement validation [Done]
+  - [x] ~~Show error~~ / button not active
+
+Addition:
+
+- [x] Demo page
 
 ## **Target Progress 3** (11 Des):
 
@@ -45,6 +52,8 @@ Resources:
   - [ ] Castling(?)
   - [ ] That one pawn move
 - [ ] Save movement log [TODO]
+  - [ ] Add log
+  - [ ] Undo/Redo functions [Optional]
 
 ---
 
