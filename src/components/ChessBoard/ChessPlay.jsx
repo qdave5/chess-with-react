@@ -21,33 +21,41 @@ const ChessBoardContain = () => {
 
   const [sourcePiece, setSourcePiece] = useState(null);
 
-  const [whiteValidMove, setWhiteValidMove] = useState({
-    side: PieceSide.White,
+  const [validMove, setValidMove] = useState({
+    [PieceSide.White]: {},
+    [PieceSide.Black]: {},
   });
-  const [blackValidMove, setBlackValidMove] = useState({
-    side: PieceSide.Black,
-  });
+
+  console.log(validMove);
 
   useEffect(() => {
     setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
   }, []);
 
   useEffect(() => {
-    updateValidMove(setWhiteValidMove);
-    updateValidMove(setBlackValidMove);
+    updateValidMove();
   }, [tileList, sourcePiece]);
 
-  const updateValidMove = (setValidMove) => {
+  const updateValidMove = () => {
     setValidMove((prev) => {
-      const list = tileList.filter((tile) => tile.piece?.side === prev?.side);
+      const whiteList = tileList.filter(
+        (tile) => tile.piece?.side === PieceSide.White
+      );
+      const blackList = tileList.filter(
+        (tile) => tile.piece?.side === PieceSide.Black
+      );
 
-      const listMap = list.map((item) => ({
+      const whiteMap = whiteList.map((item) => ({
+        [item.tile]: checkValidMove(item),
+      }));
+      const blackMap = blackList.map((item) => ({
         [item.tile]: checkValidMove(item),
       }));
 
-      console.log(prev.side, listMap);
-
-      return { ...prev, listMap };
+      return {
+        [PieceSide.White]: whiteMap,
+        [PieceSide.Black]: blackMap,
+      };
     });
   };
 
