@@ -3,6 +3,7 @@ import { Container, Table } from "reactstrap";
 import ChessBoardTile from "./ChessBoardTile";
 import { checkValidMove } from "../../functions/PieceMovement/BasicMovement";
 import { getIndexFromRowCol } from "../../functions";
+import { PieceSide } from "../../constant/PieceSide";
 
 const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
   const [tile8x8, setTile8x8] = useState([]);
@@ -51,9 +52,33 @@ const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
   return sourcePiece === null
     ? cell.piece?.side === sideTurn
     : sourcePiece === cell ||
-        checkValidMove(sourcePiece).includes(
+        isValidMove(
+          tileItems,
+          sideTurn,
+          checkValidMove(sourcePiece),
           getIndexFromRowCol(cell.row, cell.col)
         );
+};
+
+const isValidMove = (tileItems, sideTurn, validMove, index) => {
+  const listValidMove = [];
+  validMove.map((listIdx) => {
+    let listTile = [];
+    for (var idx = 0; idx < listIdx.length; idx++) {
+      if (tileItems[listIdx[idx]]?.piece.side === PieceSide.Empty) {
+        listTile.push(listIdx[idx]);
+      } else if (tileItems[listIdx[idx]]?.piece.side === sideTurn) {
+        break;
+      } else {
+        listTile.push(listIdx[idx]);
+        break;
+      }
+    }
+
+    listValidMove.push(listTile);
+  });
+
+  return listValidMove.flat().includes(index);
 };
 
 export default ChessBoard;
