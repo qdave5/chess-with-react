@@ -28,24 +28,24 @@ import {
   stepUpRightKnight,
 } from "./Step";
 
-export const pieceStep = (tileList, source, target) => {
+export const pieceStep = (source) => {
   switch (source.piece?.type) {
     case PieceType.Pawn:
-      return pawnStep(tileList, source, target);
+      return pawnStep(source);
     case PieceType.Bishop:
-      return bishopStep(tileList, source, target);
+      return bishopStep(source);
     case PieceType.Knight:
-      return knightStep(tileList, source, target);
+      return knightStep(source);
     case PieceType.Rook:
-      return rookStep(tileList, source, target);
+      return rookStep(source);
     case PieceType.Queen:
-      return queenStep(tileList, source, target);
+      return queenStep(source);
     case PieceType.King:
-      return kingStep(tileList, source, target);
+      return kingStep(source);
   }
 };
 
-export const pawnStep = (tileList, source, target) => {
+export const pawnStep = (source) => {
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList =
@@ -63,7 +63,7 @@ export const pawnStep = (tileList, source, target) => {
   return stepIdxList;
 };
 
-export const bishopStep = (tileList, source, target) => {
+export const bishopStep = (source) => {
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -76,7 +76,7 @@ export const bishopStep = (tileList, source, target) => {
   return stepIdxList;
 };
 
-export const knightStep = (tileList, source, target) => {
+export const knightStep = (source) => {
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -93,7 +93,7 @@ export const knightStep = (tileList, source, target) => {
   return stepIdxList;
 };
 
-export const rookStep = (tileList, source, target) => {
+export const rookStep = (source) => {
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -106,7 +106,7 @@ export const rookStep = (tileList, source, target) => {
   return stepIdxList;
 };
 
-export const queenStep = (tileList, source, target) => {
+export const queenStep = (source) => {
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [
@@ -123,7 +123,7 @@ export const queenStep = (tileList, source, target) => {
   return stepIdxList;
 };
 
-export const kingStep = (tileList, source, target) => {
+export const kingStep = (source) => {
   const idx = getIndexFromRowCol(source.row, source.col);
 
   const stepIdxList = [

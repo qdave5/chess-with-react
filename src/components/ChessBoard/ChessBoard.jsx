@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Table } from "reactstrap";
 import ChessBoardTile from "./ChessBoardTile";
 import { checkValidMove } from "../../functions/PieceMovement/BasicMovement";
+import { getIndexFromRowCol } from "../../functions";
 
 const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
   const [tile8x8, setTile8x8] = useState([]);
@@ -49,7 +50,9 @@ const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
 const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
   return sourcePiece === null
     ? cell.piece?.side === sideTurn
-    : checkValidMove(tileItems, sourcePiece, cell);
+    : checkValidMove(sourcePiece).includes(
+        getIndexFromRowCol(cell.row, cell.col)
+      );
 };
 
 export default ChessBoard;
