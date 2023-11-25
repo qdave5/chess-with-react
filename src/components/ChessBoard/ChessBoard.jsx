@@ -50,9 +50,10 @@ const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
 const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
   return sourcePiece === null
     ? cell.piece?.side === sideTurn
-    : checkValidMove(sourcePiece).includes(
-        getIndexFromRowCol(cell.row, cell.col)
-      );
+    : sourcePiece === cell ||
+        checkValidMove(sourcePiece).includes(
+          getIndexFromRowCol(cell.row, cell.col)
+        );
 };
 
 export default ChessBoard;
