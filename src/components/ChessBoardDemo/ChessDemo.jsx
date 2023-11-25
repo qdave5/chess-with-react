@@ -57,9 +57,7 @@ const ChessBoardContain = () => {
               handleClickEvent={handleClickEvent}
             />
           </Col>
-          <Col sm={1} md={1} lg={1}>
-            {/* <DemoOperations /> */}
-          </Col>
+          <Col sm={1} md={1} lg={1}></Col>
         </div>
       </Container>
     </Fragment>
