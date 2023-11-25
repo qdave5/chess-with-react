@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Container, Label } from "reactstrap";
+import { Col, Container, Label } from "reactstrap";
 import ChessBoard from "../ChessBoard/ChessBoard";
 import { getDefaultPieces, getEmptyTiles } from "../../constructor/Tiles";
 import { getTile, updateAllTiles } from "../../functions/Tiles";
@@ -44,16 +44,19 @@ const ChessBoardContain = () => {
   return (
     <Fragment>
       <Container fluid>
-        <Label>
-          <strong>{getSideTurn(sideTurn)}'s Turn</strong>
-        </Label>
         <div className="d-flex text-center">
-          <ChessBoard
-            tileItems={tileList}
-            sourcePiece={sourcePiece}
-            sideTurn={sideTurn}
-            handleClickEvent={handleClickEvent}
-          />
+          <Col>
+            <Label>
+              <strong>{sideTurn}'s Turn</strong>
+            </Label>
+            <ChessBoard
+              tileItems={tileList}
+              sourcePiece={sourcePiece}
+              sideTurn={sideTurn}
+              handleClickEvent={handleClickEvent}
+            />
+          </Col>
+          <Col sm={1} md={1} lg={1}></Col>
         </div>
       </Container>
     </Fragment>
