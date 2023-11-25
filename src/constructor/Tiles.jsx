@@ -43,12 +43,32 @@ export const getDefaultPieces = () =>
       RookBlackPiece(),
     ],
 
-    getSameRow(PawnBlackPiece()),
+    [
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+      PawnBlackPiece(),
+    ],
+
     getSameRow(EmptyPiece()),
     getSameRow(EmptyPiece()),
     getSameRow(EmptyPiece()),
     getSameRow(EmptyPiece()),
-    getSameRow(PawnWhitePiece()),
+
+    [
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+      PawnWhitePiece(),
+    ],
 
     [
       RookWhitePiece(),
