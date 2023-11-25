@@ -11,7 +11,7 @@ const Layout = () => {
           <Col xs={"auto"}>
             <NavbarLayout />
           </Col>
-          <Col xs={9}>
+          <Col xs={8}>
             <Outlet />
           </Col>
         </Row>
