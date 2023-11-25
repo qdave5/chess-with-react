@@ -8,10 +8,10 @@ const Layout = () => {
     <Fragment>
       <Container fluid>
         <Row>
-          <Col>
+          <Col xs={"auto"}>
             <NavbarLayout />
           </Col>
-          <Col xs={9} md={9} xl={9}>
+          <Col xs={9}>
             <Outlet />
           </Col>
         </Row>
