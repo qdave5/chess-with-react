@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home";
 import ChessPlay from "../pages/ChessPlay";
+import ChessDemo from "../components/ChessBoardDemo/ChessDemo";
 
 const Routers = () => {
   return (
@@ -12,6 +13,7 @@ const Routers = () => {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/play" element={<ChessPlay />} />
+            <Route path="/demo" element={<ChessDemo />} />
           </Route>
         </Routes>
       </BrowserRouter>
