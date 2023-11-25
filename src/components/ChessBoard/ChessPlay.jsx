@@ -35,7 +35,7 @@ const ChessBoardContain = () => {
   useEffect(() => {
     updateValidMove(setWhiteValidMove);
     updateValidMove(setBlackValidMove);
-  }, [sourcePiece]);
+  }, [tileList, sourcePiece]);
 
   const updateValidMove = (setValidMove) => {
     setValidMove((prev) => {
