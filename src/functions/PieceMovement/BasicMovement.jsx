@@ -1,19 +1,11 @@
-import { getIndexFromRowCol } from "..";
 import { EmptyPiece } from "../../components/Piece";
-import PieceType from "../../constant/PieceType";
 import { pieceStep } from "./PieceStep";
 
 export const movePiece = (sourceTile, targetTile) => {
-  console.log("source", sourceTile);
-  console.log("target", targetTile);
-
   targetTile.piece = sourceTile.piece;
   sourceTile.piece = EmptyPiece();
 
   targetTile.piece.step += 1;
-
-  console.log("source", sourceTile);
-  console.log("target", targetTile);
 };
 
 export const checkValidMove = (source, target) => {

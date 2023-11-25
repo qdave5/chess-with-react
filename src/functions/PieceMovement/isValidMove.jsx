@@ -1,4 +1,3 @@
-import React from "react";
 import { PieceSide } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
 
@@ -11,8 +10,6 @@ export const isValidMove = (tileItems, source, validMove, index) => {
     listValidMove.push(isValidMoveOther(tileItems, source, validMove));
   }
 
-  console.log(listValidMove.flat());
-
   return listValidMove.flat().includes(index);
 };
 
@@ -21,7 +18,6 @@ const isValidMovePawn = (tileItems, source, validMove) => {
 
   const idxFront = validMove[0];
   const idxOther = [validMove[1], validMove[2]].flat();
-  console.log(idxFront, idxOther);
 
   // front
   for (var idx = 0; idx < 2; idx++) {

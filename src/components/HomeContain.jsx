@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Container, Label, Row } from "reactstrap";
-import axios, * as others from "axios";
+import axios from "axios";
 
 const HomeContain = () => {
   const [title, setTitle] = useState({
