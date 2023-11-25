@@ -3,15 +3,18 @@ import { Container, Label } from "reactstrap";
 import ChessBoard from "../ChessBoard/ChessBoard";
 import { getDefaultPieces, getEmptyTiles } from "../../constructor/Tiles";
 import { getTile, updateAllTiles } from "../../functions/Tiles";
-import { getSideTurn } from "../../constant/PieceSide";
+import { PieceSide, getSideTurn } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
-import { movePiece } from "../../functions/PieceMovement";
+import { movePiece } from "../../functions/PieceMovement/BasicMovement";
 
 const ChessBoardContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
 
-  const [sideTurn, setSideTurn] = useState(true);
-  const toggleSideTurn = () => setSideTurn(!sideTurn);
+  const [sideTurn, setSideTurn] = useState(PieceSide.White);
+  const toggleSideTurn = () =>
+    setSideTurn(
+      sideTurn === PieceSide.White ? PieceSide.Black : PieceSide.White
+    );
 
   const [sourcePiece, setSourcePiece] = useState(null);
 
@@ -32,6 +35,7 @@ const ChessBoardContain = () => {
     } else {
       movePiece(sourcePiece, selectedTile);
       setSourcePiece(null);
+      toggleSideTurn();
     }
   };
 
@@ -46,6 +50,8 @@ const ChessBoardContain = () => {
         <div className="d-flex text-center">
           <ChessBoard
             tileItems={tileList}
+            sourcePiece={sourcePiece}
+            sideTurn={sideTurn}
             handleClickEvent={handleClickEvent}
           />
         </div>
