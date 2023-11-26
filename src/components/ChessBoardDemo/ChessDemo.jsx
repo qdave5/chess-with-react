@@ -19,6 +19,7 @@ const ChessBoardContain = () => {
     );
 
   const [sourcePiece, setSourcePiece] = useState(null);
+  const [operationPiece, setOperationPiece] = useState(null);
 
   useEffect(() => {
     setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
@@ -29,15 +30,36 @@ const ChessBoardContain = () => {
   const handleClickEvent = (tile) => {
     const selectedTile = getTile(tileList, tile);
 
-    if (sourcePiece === null) {
-      if (selectedTile.piece.type !== PieceType.Empty)
-        setSourcePiece(selectedTile);
-    } else if (sourcePiece.tile === tile) {
-      setSourcePiece(null);
+    if (operationPiece === null) {
+      if (sourcePiece === null) {
+        if (selectedTile.piece.type !== PieceType.Empty)
+          setSourcePiece(selectedTile);
+      } else if (sourcePiece.tile === tile) {
+        setSourcePiece(null);
+      } else {
+        movePiece(sourcePiece, selectedTile);
+        setSourcePiece(null);
+        toggleSideTurn();
+      }
     } else {
-      movePiece(sourcePiece, selectedTile);
-      setSourcePiece(null);
-      toggleSideTurn();
+      movePiece(operationPiece, selectedTile);
+      setOperationPiece(null);
+    }
+  };
+
+  const handleOperationsClickEvent = (operation) => {
+    var newItem = {};
+    for (var i in operation.item) newItem[i] = operation.item[i];
+
+    if (operationPiece === null) {
+      setOperationPiece({ piece: newItem });
+    } else if (
+      operationPiece.piece.side === newItem.side &&
+      operationPiece.piece.type === newItem.type
+    ) {
+      setOperationPiece(null);
+    } else {
+      setOperationPiece({ piece: newItem });
     }
   };
 
@@ -60,7 +82,7 @@ const ChessBoardContain = () => {
             />
           </Col>
           <Col sm={1} md={1} lg={1}>
-            <DemoOperations />
+            <DemoOperations handleClickEvent={handleOperationsClickEvent} />
           </Col>
         </div>
       </Container>
