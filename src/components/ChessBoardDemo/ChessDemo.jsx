@@ -1,12 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Col, Container, Label } from "reactstrap";
-import ChessBoard from "./ChessBoard";
+import ChessBoard from "../ChessBoard/ChessBoard";
 import { getDefaultPieces, getEmptyTiles } from "../../constructor/Tiles";
 import { getTile, updateAllTiles } from "../../functions/Tiles";
 import { PieceSide, getSideTurn } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
 import { movePiece } from "../../functions/PieceMovement/BasicMovement";
 import DemoOperations from "./DemoOperations";
+import GameMode from "../../constant/GameMode";
 
 const ChessBoardContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
@@ -55,9 +56,12 @@ const ChessBoardContain = () => {
               sourcePiece={sourcePiece}
               sideTurn={sideTurn}
               handleClickEvent={handleClickEvent}
+              gameMode={GameMode.Demo}
             />
           </Col>
-          <Col sm={1} md={1} lg={1}></Col>
+          <Col sm={1} md={1} lg={1}>
+            <DemoOperations />
+          </Col>
         </div>
       </Container>
     </Fragment>

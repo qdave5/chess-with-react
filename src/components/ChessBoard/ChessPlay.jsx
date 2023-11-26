@@ -9,6 +9,7 @@ import {
   checkValidMove,
   movePiece,
 } from "../../functions/PieceMovement/BasicMovement";
+import GameMode from "../../constant/GameMode";
 
 const ChessBoardContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
@@ -85,6 +86,7 @@ const ChessBoardContain = () => {
               sourcePiece={sourcePiece}
               sideTurn={sideTurn}
               handleClickEvent={handleClickEvent}
+              gameMode={GameMode.Normal}
             />
           </Col>
           <Col sm={1} md={1} lg={1}></Col>
