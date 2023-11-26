@@ -5,7 +5,13 @@ import { checkValidMove } from "../../functions/PieceMovement/BasicMovement";
 import { getIndexFromRowCol } from "../../functions";
 import { isValidMove } from "../../functions/PieceMovement/isValidMove";
 
-const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
+const ChessBoard = ({
+  tileItems,
+  sourcePiece,
+  sideTurn,
+  handleClickEvent,
+  gameMode,
+}) => {
   const [tile8x8, setTile8x8] = useState([]);
 
   useEffect(() => {
@@ -37,6 +43,7 @@ const ChessBoard = ({ tileItems, sourcePiece, sideTurn, handleClickEvent }) => {
                       sideTurn
                     )}
                     handleClickEvent={handleClickEvent}
+                    gameMode={gameMode}
                   />
                 </td>
               ))}

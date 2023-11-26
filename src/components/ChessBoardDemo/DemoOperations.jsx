@@ -11,71 +11,123 @@ import {
   IconChessKingFilled,
   IconChessKnightFilled,
   IconChessRookFilled,
+  IconCircle,
+  IconCircleFilled,
+  IconTrash,
 } from "@tabler/icons-react";
-import React from "react";
+import React, { useState } from "react";
 import { Col, Row } from "reactstrap";
+import {
+  BishopBlackPiece,
+  BishopWhitePiece,
+  EmptyPiece,
+  KingBlackPiece,
+  KingWhitePiece,
+  KnightBlackPiece,
+  KnightWhitePiece,
+  PawnBlackPiece,
+  PawnWhitePiece,
+  QueenBlackPiece,
+  QueenWhitePiece,
+  RookBlackPiece,
+  RookWhitePiece,
+} from "../Piece";
 
 const blackList = [
-  <IconChessFilled />,
-  <IconChessBishopFilled />,
-  <IconChessKnightFilled />,
-  <IconChessRookFilled />,
-  <IconChessQueenFilled />,
-  <IconChessKingFilled />,
+  PawnBlackPiece(),
+  BishopBlackPiece(),
+  KnightBlackPiece(),
+  RookBlackPiece(),
+  QueenBlackPiece(),
+  KingBlackPiece(),
 ];
 const whiteList = [
-  <IconChess />,
-  <IconChessBishop />,
-  <IconChessKnight />,
-  <IconChessRook />,
-  <IconChessQueen />,
-  <IconChessKing />,
+  PawnWhitePiece(),
+  BishopWhitePiece(),
+  KnightWhitePiece(),
+  RookWhitePiece(),
+  QueenWhitePiece(),
+  KingWhitePiece(),
 ];
 
-const DemoOperations = () => {
+const DemoOperations = ({ handleClickEvent }) => {
+  const [side, setSide] = useState(true);
+  const toggleSide = () => setSide(!side);
+
   return (
     <Row>
-      {/* black team */}
       <Col className="btn-group-vertical my-3">
-        {blackList.map((item) => {
-          return (
-            <button
-              type="button"
-              class="btn btn-light"
-              style={{
-                minWidth: "50px",
-                minHeight: "50px",
-                padding: "12.5%",
-              }}
-              name={"b-pawn"}
-              // onClick={() => handleClickEvent("b-pawn")}
-              color={"light"}
-            >
-              {item}
-            </button>
-          );
-        })}
+        <button
+          type="button"
+          class="btn btn-light"
+          style={{
+            minWidth: "50px",
+            minHeight: "50px",
+            padding: "12.5%",
+          }}
+          onClick={toggleSide}
+        >
+          {side ? <IconCircleFilled /> : <IconCircle />}
+        </button>
       </Col>
-      {/* white team */}
+      {side ? (
+        // White Team
+        <Col>
+          {whiteList.map((item) => {
+            return (
+              <button
+                type="button"
+                class="btn btn-light"
+                style={{
+                  minWidth: "50px",
+                  minHeight: "50px",
+                  padding: "12.5%",
+                }}
+                name={"b-pawn"}
+                onClick={() => handleClickEvent({ item: item })}
+                color={"light"}
+              >
+                {item.icon}
+              </button>
+            );
+          })}
+        </Col>
+      ) : (
+        // Black Team
+        <Col>
+          {blackList.map((item) => {
+            return (
+              <button
+                type="button"
+                class="btn btn-light"
+                style={{
+                  minWidth: "50px",
+                  minHeight: "50px",
+                  padding: "12.5%",
+                }}
+                name={"b-pawn"}
+                onClick={() => handleClickEvent({ item: item })}
+                color={"light"}
+              >
+                {item.icon}
+              </button>
+            );
+          })}
+        </Col>
+      )}
       <Col className="btn-group-vertical my-3">
-        {whiteList.map((item) => {
-          return (
-            <button
-              type="button"
-              class="btn btn-light"
-              style={{
-                minWidth: "50px",
-                minHeight: "50px",
-                padding: "12.5%",
-              }}
-              name={"b-pawn"}
-              // onClick={() => handleClickEvent("b-pawn")}
-              color={"light"}
-            >
-              {item}
-            </button>
-          );
-        })}
+        <button
+          type="button"
+          class="btn btn-light"
+          style={{
+            minWidth: "50px",
+            minHeight: "50px",
+            padding: "12.5%",
+          }}
+          onClick={() => handleClickEvent({ item: EmptyPiece() })}
+        >
+          <IconTrash />
+        </button>
       </Col>
     </Row>
   );
