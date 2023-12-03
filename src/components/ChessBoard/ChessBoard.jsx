@@ -3,7 +3,7 @@ import { Container, Table } from "reactstrap";
 import ChessBoardTile from "./ChessBoardTile";
 import { checkValidMove } from "../../functions/PieceMovement/BasicMovement";
 import { getIndexFromRowCol } from "../../functions";
-import { isValidMove } from "../../functions/PieceMovement/isValidMove";
+import { isValidMove } from "../../functions/validations/isValidMove";
 
 const ChessBoard = ({
   tileItems,

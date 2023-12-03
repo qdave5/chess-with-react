@@ -8,6 +8,8 @@ import PieceType from "../../constant/PieceType";
 import { movePiece } from "../../functions/PieceMovement/BasicMovement";
 import DemoOperations from "./DemoOperations";
 import GameMode from "../../constant/GameMode";
+import { isPawnMoveToTop } from "../../functions/validations/PawnPromotion";
+import ModalPawnPromotion from "../ModalPawnPromotion";
 
 const ChessBoardContain = () => {
   const [tileList, setTileList] = useState(getEmptyTiles());
@@ -20,6 +22,10 @@ const ChessBoardContain = () => {
 
   const [sourcePiece, setSourcePiece] = useState(null);
   const [operationPiece, setOperationPiece] = useState(null);
+
+  const [modalPawnPromoteOpen, setModalPawnPromoteOpen] = useState(false);
+  const toggleModalPawnPromote = () =>
+    setModalPawnPromoteOpen(!modalPawnPromoteOpen);
 
   useEffect(() => {
     setTileList(updateAllTiles(getEmptyTiles(), getDefaultPieces()));
@@ -37,9 +43,16 @@ const ChessBoardContain = () => {
       } else if (sourcePiece.tile === tile) {
         setSourcePiece(null);
       } else {
-        movePiece(sourcePiece, selectedTile);
-        setSourcePiece(null);
-        toggleSideTurn();
+        if (isPawnMoveToTop(sourcePiece, selectedTile)) {
+          toggleModalPawnPromote();
+          movePiece(sourcePiece, selectedTile);
+          setSourcePiece(selectedTile);
+          toggleSideTurn();
+        } else {
+          movePiece(sourcePiece, selectedTile);
+          setSourcePiece(null);
+          toggleSideTurn();
+        }
       }
     } else {
       movePiece(operationPiece, selectedTile);
@@ -63,6 +76,11 @@ const ChessBoardContain = () => {
     }
   };
 
+  const handlePawnChange = (item) => {
+    sourcePiece.piece = item.item;
+    setSourcePiece(null);
+  };
+
   console.log(sourcePiece);
 
   return (
@@ -78,6 +96,8 @@ const ChessBoardContain = () => {
               sourcePiece={sourcePiece}
               sideTurn={sideTurn}
               handleClickEvent={handleClickEvent}
+              modalPawnOpen={modalPawnPromoteOpen}
+              toggleModalPawn={toggleModalPawnPromote}
               gameMode={GameMode.Demo}
             />
           </Col>
@@ -85,6 +105,12 @@ const ChessBoardContain = () => {
             <DemoOperations handleClickEvent={handleOperationsClickEvent} />
           </Col>
         </div>
+        <ModalPawnPromotion
+          tile={sourcePiece}
+          modalOpen={modalPawnPromoteOpen}
+          toggle={toggleModalPawnPromote}
+          handleClick={handlePawnChange}
+        />
       </Container>
     </Fragment>
   );
