@@ -59,7 +59,7 @@ const DemoOperations = ({ handleClickEvent }) => {
       <Col className="btn-group-vertical my-3">
         <button
           type="button"
-          class="btn btn-light"
+          className="btn btn-light"
           style={{
             minWidth: "50px",
             minHeight: "50px",
@@ -77,7 +77,7 @@ const DemoOperations = ({ handleClickEvent }) => {
             return (
               <button
                 type="button"
-                class="btn btn-light"
+                className="btn btn-light"
                 style={{
                   minWidth: "50px",
                   minHeight: "50px",
@@ -99,7 +99,7 @@ const DemoOperations = ({ handleClickEvent }) => {
             return (
               <button
                 type="button"
-                class="btn btn-light"
+                className="btn btn-light"
                 style={{
                   minWidth: "50px",
                   minHeight: "50px",
@@ -118,7 +118,7 @@ const DemoOperations = ({ handleClickEvent }) => {
       <Col className="btn-group-vertical my-3">
         <button
           type="button"
-          class="btn btn-light"
+          className="btn btn-light"
           style={{
             minWidth: "50px",
             minHeight: "50px",
