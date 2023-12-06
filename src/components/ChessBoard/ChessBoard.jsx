@@ -19,6 +19,9 @@ import { isPawnMoveToTop } from "../../functions/validations/PawnPromotion";
 const ChessBoard = ({ gameMode }) => {
   const [tileList, setTileList] = useState(getEmptyTiles());
 
+  const [totalStep, setTotalStep] = useState(0);
+  const addStep = () => setTotalStep(totalStep + 1);
+
   const [sideTurn, setSideTurn] = useState(PieceSide.White);
   const toggleSideTurn = () =>
     setSideTurn(
@@ -52,14 +55,13 @@ const ChessBoard = ({ gameMode }) => {
       } else {
         if (isPawnMoveToTop(sourcePiece, selectedTile)) {
           toggleModalPawnPromote();
-          movePiece(sourcePiece, selectedTile);
           setSourcePiece(selectedTile);
-          toggleSideTurn();
         } else {
-          movePiece(sourcePiece, selectedTile);
           setSourcePiece(null);
-          toggleSideTurn();
         }
+        movePiece(sourcePiece, selectedTile, totalStep);
+        toggleSideTurn();
+        addStep();
       }
     } else {
       movePiece(operationPiece, selectedTile);
@@ -135,13 +137,11 @@ const ChessBoard = ({ gameMode }) => {
             </tbody>
           </Table>
         </Col>
-        {gameMode === GameMode.Normal ? (
-          <Col sm={1} md={1} lg={1}></Col>
-        ) : (
-          <Col sm={1} md={1} lg={1}>
+        <Col sm={1} md={1} lg={1}>
+          {gameMode === GameMode.Normal ? null : (
             <DemoOperations handleClickEvent={handleOperationsClickEvent} />
-          </Col>
-        )}
+          )}
+        </Col>
       </div>
 
       <ModalPawnPromotion

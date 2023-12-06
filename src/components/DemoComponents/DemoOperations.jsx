@@ -83,7 +83,8 @@ const DemoOperations = ({ handleClickEvent }) => {
                   minHeight: "50px",
                   padding: "12.5%",
                 }}
-                name={"b-pawn"}
+                name={item.side + " " + item.type}
+                key={item.side + " " + item.type}
                 onClick={() => handleClickEvent({ item: item })}
                 color={"light"}
               >
@@ -105,7 +106,8 @@ const DemoOperations = ({ handleClickEvent }) => {
                   minHeight: "50px",
                   padding: "12.5%",
                 }}
-                name={"b-pawn"}
+                name={item.side + " " + item.type}
+                key={item.side + " " + item.type}
                 onClick={() => handleClickEvent({ item: item })}
                 color={"light"}
               >

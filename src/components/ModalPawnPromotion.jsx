@@ -52,7 +52,8 @@ const ModalPawnPromotion = ({ tile, modalOpen, toggle, handleClick }) => {
                         minWidth: "10px",
                         minHeight: "10px",
                       }}
-                      name={"b-pawn"}
+                      name={item.side + " " + item.type}
+                      key={item.side + " " + item.type}
                       onClick={() => {
                         toggle();
                         handleClick({ item: item });
@@ -76,7 +77,8 @@ const ModalPawnPromotion = ({ tile, modalOpen, toggle, handleClick }) => {
                         minWidth: "10px",
                         minHeight: "10px",
                       }}
-                      name={"b-pawn"}
+                      name={item.side + " " + item.type}
+                      key={item.side + " " + item.type}
                       onClick={() => {
                         toggle();
                         handleClick({ item: item });
