@@ -53,13 +53,13 @@ const ChessBoard = ({ gameMode }) => {
       } else if (sourcePiece.tile === tile) {
         setSourcePiece(null);
       } else {
-        if (isPawnMoveToTop(sourcePiece, selectedTile)) {
+        if (isPawnMoveToTop(sourcePiece, selectedTile, tileList)) {
           toggleModalPawnPromote();
           setSourcePiece(selectedTile);
         } else {
           setSourcePiece(null);
         }
-        movePiece(sourcePiece, selectedTile, totalStep);
+        movePiece(sourcePiece, selectedTile, tileList, totalStep);
         toggleSideTurn();
         addStep();
       }
@@ -125,7 +125,8 @@ const ChessBoard = ({ gameMode }) => {
                           tileList,
                           sourcePiece,
                           cell,
-                          sideTurn
+                          sideTurn,
+                          totalStep
                         )}
                         handleClickEvent={handleClickEvent}
                         gameMode={gameMode}
@@ -154,7 +155,7 @@ const ChessBoard = ({ gameMode }) => {
   );
 };
 
-const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
+const isButtonActive = (tileItems, sourcePiece, cell, sideTurn, totalStep) => {
   return sourcePiece === null
     ? cell.piece?.side === sideTurn
     : sourcePiece === cell ||
@@ -162,7 +163,8 @@ const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
           tileItems,
           sourcePiece,
           checkValidMove(sourcePiece),
-          getIndexFromRowCol(cell.row, cell.col)
+          getIndexFromRowCol(cell.row, cell.col),
+          totalStep
         );
 };
 
