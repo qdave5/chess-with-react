@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import { Container } from "reactstrap";
-import ChessBoardContain from "../components/GameMode/ChessPlay";
+import ChessBoardContain from "../components/GameMode/ChessDemo";
 
-const ChessPlay = () => {
+const ChessDemo = () => {
   return (
     <Fragment>
       <Container fluid>
@@ -12,4 +12,4 @@ const ChessPlay = () => {
   );
 };
 
-export default ChessPlay;
+export default ChessDemo;

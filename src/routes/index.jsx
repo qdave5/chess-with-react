@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "../layout/Layout";
 import Home from "../pages/Home";
 import ChessPlay from "../pages/ChessPlay";
-import ChessDemo from "../components/ChessBoardDemo/ChessDemo";
+import ChessDemo from "../pages/ChessDemo";
 
 const Routers = () => {
   return (

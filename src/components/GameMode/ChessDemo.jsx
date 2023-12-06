@@ -6,7 +6,7 @@ import { getTile, updateAllTiles } from "../../functions/Tiles";
 import { PieceSide, getSideTurn } from "../../constant/PieceSide";
 import PieceType from "../../constant/PieceType";
 import { movePiece } from "../../functions/PieceMovement/BasicMovement";
-import DemoOperations from "./DemoOperations";
+import DemoOperations from "../DemoComponents/DemoOperations";
 import GameMode from "../../constant/GameMode";
 import { isPawnMoveToTop } from "../../functions/validations/PawnPromotion";
 import ModalPawnPromotion from "../ModalPawnPromotion";
