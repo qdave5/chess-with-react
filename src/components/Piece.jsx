@@ -20,6 +20,7 @@ export const Piece = (side) => (type) => (icon) => ({
   side: side,
   step: 0,
   type: type,
+  lastMove: -1,
 });
 
 const WhitePiece = Piece(PieceSide.White);

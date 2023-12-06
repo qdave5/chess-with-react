@@ -62,8 +62,20 @@ export const pawnStep = (source) => {
             [stepDownRight(idx)],
           ]
       : source.piece?.side === PieceSide.White
-      ? [[stepUp(idx)], [stepUpLeft(idx)], [stepUpRight(idx)]]
-      : [[stepDown(idx)], [stepDownLeft(idx)], [stepDownRight(idx)]];
+      ? [
+          [stepUp(idx)],
+          [stepUpLeft(idx)],
+          [stepUpRight(idx)],
+          [stepLeft(idx)], // en passant
+          [stepRight(idx)], // en passant
+        ]
+      : [
+          [stepDown(idx)],
+          [stepDownLeft(idx)],
+          [stepDownRight(idx)],
+          [stepLeft(idx)], // en passant
+          [stepRight(idx)], // en passant
+        ];
 
   return stepIdxList;
 };

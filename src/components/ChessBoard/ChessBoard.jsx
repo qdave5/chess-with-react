@@ -19,6 +19,9 @@ import { isPawnMoveToTop } from "../../functions/validations/PawnPromotion";
 const ChessBoard = ({ gameMode }) => {
   const [tileList, setTileList] = useState(getEmptyTiles());
 
+  const [totalStep, setTotalStep] = useState(0);
+  const addStep = () => setTotalStep(totalStep + 1);
+
   const [sideTurn, setSideTurn] = useState(PieceSide.White);
   const toggleSideTurn = () =>
     setSideTurn(
@@ -50,16 +53,15 @@ const ChessBoard = ({ gameMode }) => {
       } else if (sourcePiece.tile === tile) {
         setSourcePiece(null);
       } else {
-        if (isPawnMoveToTop(sourcePiece, selectedTile)) {
+        if (isPawnMoveToTop(sourcePiece, selectedTile, tileList)) {
           toggleModalPawnPromote();
-          movePiece(sourcePiece, selectedTile);
           setSourcePiece(selectedTile);
-          toggleSideTurn();
         } else {
-          movePiece(sourcePiece, selectedTile);
           setSourcePiece(null);
-          toggleSideTurn();
         }
+        movePiece(sourcePiece, selectedTile, tileList, totalStep);
+        toggleSideTurn();
+        addStep();
       }
     } else {
       movePiece(operationPiece, selectedTile);
@@ -123,7 +125,8 @@ const ChessBoard = ({ gameMode }) => {
                           tileList,
                           sourcePiece,
                           cell,
-                          sideTurn
+                          sideTurn,
+                          totalStep
                         )}
                         handleClickEvent={handleClickEvent}
                         gameMode={gameMode}
@@ -135,13 +138,11 @@ const ChessBoard = ({ gameMode }) => {
             </tbody>
           </Table>
         </Col>
-        {gameMode === GameMode.Normal ? (
-          <Col sm={1} md={1} lg={1}></Col>
-        ) : (
-          <Col sm={1} md={1} lg={1}>
+        <Col sm={1} md={1} lg={1}>
+          {gameMode === GameMode.Normal ? null : (
             <DemoOperations handleClickEvent={handleOperationsClickEvent} />
-          </Col>
-        )}
+          )}
+        </Col>
       </div>
 
       <ModalPawnPromotion
@@ -154,7 +155,7 @@ const ChessBoard = ({ gameMode }) => {
   );
 };
 
-const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
+const isButtonActive = (tileItems, sourcePiece, cell, sideTurn, totalStep) => {
   return sourcePiece === null
     ? cell.piece?.side === sideTurn
     : sourcePiece === cell ||
@@ -162,7 +163,8 @@ const isButtonActive = (tileItems, sourcePiece, cell, sideTurn) => {
           tileItems,
           sourcePiece,
           checkValidMove(sourcePiece),
-          getIndexFromRowCol(cell.row, cell.col)
+          getIndexFromRowCol(cell.row, cell.col),
+          totalStep
         );
 };
 
