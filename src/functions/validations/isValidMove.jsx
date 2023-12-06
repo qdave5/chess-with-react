@@ -42,7 +42,8 @@ const isValidMovePawn = (tileItems, source, validMove, lastStep) => {
     if (
       tileItems[idxEnPassant[idx]]?.piece.side !== source?.piece.side &&
       tileItems[idxEnPassant[idx]]?.piece.side !== PieceSide.Empty &&
-      tileItems[idxEnPassant[idx]]?.piece.lastMove === lastStep
+      tileItems[idxEnPassant[idx]]?.piece.lastMove === lastStep &&
+      [4, 5].includes(tileItems[idxEnPassant[idx]]?.row)
     ) {
       listTile.push(idxOther[idx]);
     }
