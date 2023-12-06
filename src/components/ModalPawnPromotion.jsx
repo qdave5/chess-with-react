@@ -1,13 +1,5 @@
-import React, { useEffect } from "react";
-import {
-  Button,
-  Modal,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  Row,
-  Col,
-} from "reactstrap";
+import React from "react";
+import { Modal, ModalBody, Row, Col } from "reactstrap";
 import {
   BishopBlackPiece,
   BishopWhitePiece,

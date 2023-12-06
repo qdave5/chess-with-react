@@ -1,20 +1,4 @@
-import {
-  IconChess,
-  IconChessBishop,
-  IconChessKing,
-  IconChessKnight,
-  IconChessQueen,
-  IconChessQueenFilled,
-  IconChessRook,
-  IconChessBishopFilled,
-  IconChessFilled,
-  IconChessKingFilled,
-  IconChessKnightFilled,
-  IconChessRookFilled,
-  IconCircle,
-  IconCircleFilled,
-  IconTrash,
-} from "@tabler/icons-react";
+import { IconCircle, IconCircleFilled, IconTrash } from "@tabler/icons-react";
 import React, { useState } from "react";
 import { Col, Row } from "reactstrap";
 import {

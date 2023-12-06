@@ -31,7 +31,7 @@ const isValidMovePawn = (tileItems, source, validMove, lastStep) => {
   }
 
   // front-right / front-left
-  for (var idx = 0; idx < 2; idx++) {
+  for (let idx = 0; idx < 2; idx++) {
     if (
       tileItems[idxOther[idx]]?.piece.side !== source?.piece.side &&
       tileItems[idxOther[idx]]?.piece.side !== PieceSide.Empty
@@ -41,7 +41,7 @@ const isValidMovePawn = (tileItems, source, validMove, lastStep) => {
   }
 
   // en passant
-  for (var idx = 0; idx < 2; idx++) {
+  for (let idx = 0; idx < 2; idx++) {
     if (
       tileItems[idxEnPassant[idx]]?.piece.side !== source?.piece.side &&
       tileItems[idxEnPassant[idx]]?.piece.side !== PieceSide.Empty &&
