@@ -72,7 +72,7 @@ const ChessBoard = ({ gameMode }) => {
   useEffect(() => {
     let newTile = [[], [], [], [], [], [], [], []];
     let index = 0;
-    tileList.map((item) => {
+    tileList.forEach((item) => {
       const row = parseInt(index / 8);
       newTile[row].push(item);
       index++;

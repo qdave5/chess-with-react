@@ -42,6 +42,8 @@ export const pieceStep = (source) => {
       return queenStep(source);
     case PieceType.King:
       return kingStep(source);
+    default:
+      return [[-1]];
   }
 };
 

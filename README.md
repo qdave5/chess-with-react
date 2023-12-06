@@ -48,9 +48,10 @@ Addition:
 - [ ] Checkmate conditional [TODO]
   - [ ] Show when there is a check
   - [ ] End the game when checkmate
-- [ ] Game logic improvement [TODO]
-  - [ ] Castling(?)
-  - [ ] That one pawn move
+- [x] Game logic improvement [TODO]
+  - [x] Pawn's promotion
+  - [x] Castling
+  - [x] En Passant
 - [ ] Save movement log [TODO]
   - [ ] Add log
   - [ ] Undo/Redo functions [Optional]
