@@ -152,6 +152,8 @@ export const kingStep = (source) => {
     [stepDown(idx)],
     [stepDownRight(idx)],
     [stepDownLeft(idx)],
+    [stepLeftAll(idx)], // castling
+    [stepRightAll(idx)], // castling
   ];
 
   return stepIdxList;
