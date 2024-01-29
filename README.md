@@ -55,6 +55,13 @@ Addition:
 - [ ] Save movement log [TODO]
   - [ ] Add log
   - [ ] Undo/Redo functions [Optional]
+---
+
+Note from author after subject's final project:
+
+- There are still some of the targets progress 3rd that need to be finished. But, since the requirement is as long as 8 hours, it's considered as done for the subject's final project. Which means it was a result of inaccuracy and miss calculation of project's planning that has been done before starting the project.
+
+Self note of functional programming's final project: **TBA**
 
 ---
 
